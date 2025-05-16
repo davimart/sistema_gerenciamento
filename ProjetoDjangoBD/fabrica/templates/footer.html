@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Footer</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <footer class="py-3 my-4">
+                <!-- Seção de Contato e Parceiros -->
+                <div class="d-flex justify-content-center border-bottom pb-3 mb-3">
+                    <div class="col mb-3 text-center">
+                        <h3>Contato</h3>
+                        <p>Entre em contato conosco para dúvidas ou suporte:</p>
+                        <ul class="nav flex-column">
+                            <li>
+                                Email: <a href="">contato@sistema.com</a>
+                            </li>
+                            <li>Telefone: (11) 98765-4321</li>
+                            <li>Endereço: Rua Exemplo, 123 - São Paulo, SP</li>
+                        </ul>
+                    </div>
+                    <!-- Seção de Parceiros -->
+                    <div class="col mb-3 text-center">
+                        <h3>Parceiros</h3>
+                        <p>Confira os nossos parceiros:</p>
+                        <ul class="nav flex-column">
+                            <li>
+                                <a href="" target="_blank">Parceiro 1</a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">Parceiro 2</a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">Parceiro 3</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-center text-body-secondary">&copy; 2024 - Todos os direitos reservados.</p>
+            </footer>
+        </div>
+    </body>
+</html>

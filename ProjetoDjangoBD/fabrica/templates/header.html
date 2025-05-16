@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Header</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <header class="d-flex justify-content-center py-3">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/home/' %}active{% endif %}"
+                           href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/estoque/' %}active{% endif %}"
+                           href="{% url 'estoque' %}">Estoque</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/pedidos/' %}active{% endif %}"
+                           href="{% url 'pedidos' %}">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/ordens_producao/' %}active{% endif %}"
+                           href="{% url 'ordens_producao' %}">Ordens de Produção</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/fornecedores/' %}active{% endif %}"
+                           href="{% url 'fornecedores' %}">Fornecedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/clientes/' %}active{% endif %}"
+                           href="{% url 'lista_clientes' %}">Clientes</a>
+                    </li>
+                </ul>
+            </header>
+        </div>
+    </body>
+</html>

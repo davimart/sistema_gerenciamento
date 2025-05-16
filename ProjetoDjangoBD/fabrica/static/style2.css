@@ -1,0 +1,105 @@
+.nav p {
+    margin: 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px; /* Espaçamento entre os itens da lista */
+}
+
+.nav ul li {
+    display: inline;
+}
+
+.Boas-Vindas {
+    flex: 1; /* Garante que Boas-Vindas ocupe o restante do espaço */
+    width: 65%; /* Ajustado para 65% da largura */
+    max-width: 800px; /* Limita a largura máxima */
+    margin-top: 120px; /* Deixa um espaço acima para não colidir com o header */
+    margin-left: 40%; /* Centraliza Boas-Vindas em relação ao restante da tela */
+    padding: 40px;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    text-align: center;
+  }
+
+.site-footer {
+    background-color: #333; /* Cor de fundo escura */
+    color: #fff; /* Texto branco */
+    padding: 20px 10px; /* Espaçamento interno */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar em múltiplas linhas para dispositivos menores */
+    justify-content: space-around; /* Espaçamento entre seções */
+    margin-bottom: 20px;
+}
+
+.footer-section {
+    flex: 1 1 300px; /* Seções flexíveis com largura mínima */
+    margin: 10px;
+    text-align: left; /* Alinha os textos à esquerda */
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #f4f4f4;
+    border-bottom: 2px solid #555; /* Linha decorativa abaixo do título */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #9cf; /* Azul claro para links */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transição suave */
+}
+
+.footer-section ul li a:hover {
+    color: #fff; /* Branco no hover */
+}
+
+.footer-bottom {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 10px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.site-footer {
+    background-color: #333; /* Cor de fundo escura */
+    color: #fff; /* Texto branco */
+    padding: 20px 10px; /* Espaçamento interno */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+

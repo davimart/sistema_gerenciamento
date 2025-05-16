@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Comprar Matéria-Prima</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    </head>
+    <body>
+        {% include "header.html" %}
+        <div class="container my-4">
+            <h1 class="text-center">Comprar {{ materia.nome }}</h1>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>Estoque Disponível</th>
+                    <td class="{% if materia.estoque_disponivel < materia.limite_estoque_baixo %}bg-danger text-white{% endif %}">
+                        {{ materia.estoque_disponivel }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Limite Estoque Baixo</th>
+                    <td>{{ materia.limite_estoque_baixo }}</td>
+                </tr>
+                <tr>
+                    <th>Custo Unidade</th>
+                    <td>R$ {{ materia.custo_unidade|floatformat:2 }}</td>
+                </tr>
+            </table>
+            <form method="POST"
+                  action="{% url 'comprar_materiaprima' pk=materia.pk %}"
+                  class="mb-3 border p-3 rounded bg-secondary text-white"
+                  oninput="updateValorTotal()">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="fornecedor">Fornecedor</label>
+                    <select id="fornecedor" name="fornecedor" class="form-select" required>
+                        {% for fornecimento in fornecimentos %}
+                            <option value="{{ fornecimento.fornecedor.id_fornecedor }}"
+                                    data-preco="{{ fornecimento.preco }}">
+                                {{ fornecimento.fornecedor.nome }} - R$ {{ fornecimento.preco }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number"
+                           id="quantidade"
+                           name="quantidade"
+                           class="form-control"
+                           min="1"
+                           value="{{ default_quantity }}"
+                           required>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <a href="{% url 'estoque' %}" class="btn btn-sm btn-dark">Voltar</a>
+                        <button type="submit" class="btn btn-primary">Comprar</button>
+                    </div>
+                    <div class="text-white mx-auto ms-3" id="valorTotal">Valor Total: R$ 0,00</div>
+                </div>
+            </form>
+            <h2>Fornecedores</h2>
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Avaliação</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fornecimento in fornecimentos %}
+                        <tr>
+                            <td>{{ fornecimento.fornecedor.id_fornecedor }}</td>
+                            <td>{{ fornecimento.fornecedor.nome }}</td>
+                            <td>{{ fornecimento.fornecedor.avaliacao }}</td>
+                            <td>{{ fornecimento.fornecedor.telefone }}</td>
+                            <td>{{ fornecimento.fornecedor.email }}</td>
+                            <td>R$ {{ fornecimento.preco }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Nenhum fornecedor disponível.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script>
+        function updateValorTotal() {
+            var fornecedorSelect = document.getElementById('fornecedor');
+            var preco = fornecedorSelect.selectedOptions[0].getAttribute('data-preco');
+            var quantidadeInput = document.getElementById('quantidade');
+            var quantidade;
+            if (quantidadeInput.value) {
+                quantidade = parseInt(quantidadeInput.value);
+                var valorTotal = preco * quantidade;
+                var valorTotalFormatted = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                document.getElementById('valorTotal').innerText = 'Valor Total: ' + valorTotalFormatted;
+            }
+        }
+
+        window.onload = updateValorTotal;
+        </script>
+    </body>
+</html>

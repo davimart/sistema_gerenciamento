@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fernandes Materials</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    </head>
+    {% include "header.html" %}
+    <body>
+        <div class="container my-5 justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-md-6 mx-auto d-flex flex-column justify-content-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="text-center mb-4">
+                                <strong>Bem-vindo ao Sistema de Gerenciamento de Produção!</strong>
+                            </h2>
+                            <p class="mb-4 fs-4">
+                                Nosso sistema foi desenvolvido para otimizar a gestão de seu setor produtivo,
+                                oferecendo uma
+                                plataforma intuitiva e eficiente para o controle completo de suas operações. Com ele, você pode gerenciar:
+                            </p>
+                            <ul class="list-group mb-4">
+                                <li class="list-group-item fs-5">
+                                    <strong>Clientes:</strong> Organize e acompanhe as informações
+                                    e
+                                    interações com seus clientes, facilitando a comunicação e melhorando o atendimento.
+                                </li>
+                                <li class="list-group-item fs-5">
+                                    <strong>Fornecedores:</strong> Mantenha um controle eficaz
+                                    sobre
+                                    seus fornecedores, com dados atualizados e acesso rápido aos contatos e históricos.
+                                </li>
+                                <li class="list-group-item fs-5">
+                                    <strong>Estoque:</strong> Monitore a entrada e saída de
+                                    materiais e produtos, garantindo que seu estoque esteja sempre equilibrado e pronto para atender à
+                                    demanda.
+                                </li>
+                                <li class="list-group-item fs-5">
+                                    <strong>Pedidos:</strong> Acompanhe os pedidos em tempo real,
+                                    desde o recebimento até a entrega, proporcionando um processo de produção mais ágil e eficiente.
+                                </li>
+                            </ul>
+                            <p class="mb-4 fs-4">
+                                Com a integração desses módulos, você tem tudo o que precisa para tomar decisões mais
+                                rápidas
+                                e precisas, melhorando a produtividade e a competitividade de sua empresa.
+                            </p>
+                            <p class="mb-4 fs-4">
+                                Explore as funcionalidades e aproveite ao máximo todas as vantagens que o nosso sistema
+                                oferece
+                                para otimizar sua operação!
+                            </p>
+                            <div class="text-center">
+                                <img src="../static/images/logo_com_slogan.png"
+                                     class="img-fluid mx-auto my-3"
+                                     style="width: 50%;
+                                            height: auto"
+                                     alt="Let's think! Let's do it!">
+                                <div class="layout my-3"></div>
+                                <div class="parceiros">
+                                    <h4>Parceiros</h4>
+                                    <img src="../static/images/flaticon.png"
+                                         class="img-fluid mb-2 mx-auto"
+                                         style="width: 10%;
+                                                height: auto"
+                                         alt="Flaticon">
+                                    <img src="../static/images/Logo_EACH-USP.svg.png"
+                                         class="img-fluid mx-auto"
+                                         style="width: 10%;
+                                                height: auto"
+                                         alt="EACH USP">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    {% include "footer.html" %}
+</html>

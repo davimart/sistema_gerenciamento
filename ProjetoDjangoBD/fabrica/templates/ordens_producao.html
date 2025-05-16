@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ordens de Produção</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    </head>
+    <body>
+        {% include "header.html" %}
+        <div class="container my-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-center">Gerenciamento de Ordens de Produção</h1>
+                <a href="/admin/fabrica/ordemproducao/add"
+                   class="btn btn-primary btn-lg">Adicionar Nova Ordem de
+                Produção</a>
+            </div>
+            <form method="get"
+                  action=""
+                  class="mb-3 border p-3 rounded bg-secondary text-white">
+                <h2>Buscar Ordens de Produção</h2>
+                <div class="row">
+                    <div class="col-md-6">{{ form.id_ordem.label_tag }} {{ form.id_ordem }}</div>
+                    <div class="col-md-6">{{ form.status.label_tag }} {{ form.status }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.custo_total_min.label_tag }} {{ form.custo_total_min }}</div>
+                    <div class="col-md-6">{{ form.custo_total_max.label_tag }} {{ form.custo_total_max }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.data_criacao_start_date.label_tag }} {{ form.data_criacao_start_date }}</div>
+                    <div class="col-md-6">{{ form.data_criacao_end_date.label_tag }} {{ form.data_criacao_end_date }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.data_conclusao_start_date.label_tag }} {{ form.data_conclusao_start_date }}</div>
+                    <div class="col-md-6">{{ form.data_conclusao_end_date.label_tag }} {{ form.data_conclusao_end_date }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.funcionario_nome.label_tag }} {{ form.funcionario_nome }}</div>
+                    <div class="col-md-6">{{ form.funcionario_cargo.label_tag }} {{ form.funcionario_cargo }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ form.produto_nome.label_tag }} {{ form.produto_nome }}</div>
+                    <div class="col-md-4">{{ form.produto_quantidade_min.label_tag }} {{ form.produto_quantidade_min }}</div>
+                    <div class="col-md-4">{{ form.produto_quantidade_max.label_tag }} {{ form.produto_quantidade_max }}</div>
+                </div>
+                <div class="input-group-append mt-3">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </form>
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID Ordem</th>
+                        <th>Status</th>
+                        <th>Custo Total</th>
+                        <th>Data Criação</th>
+                        <th>Data Conclusão</th>
+                        <th>Funcionários</th>
+                        <th>Produtos Relacionados</th>
+                        <th>Ações Disponíveis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dado in dados_ordens %}
+                        <tr>
+                            <td>{{ dado.ordem.id_ordem }}</td>
+                            <td>{{ dado.ordem.status }}</td>
+                            <td>{{ dado.ordem.custo_total }}</td>
+                            <td>{{ dado.ordem.data_criacao }}</td>
+                            <td>{{ dado.ordem.data_conclusao }}</td>
+                            <td>
+                                {% if dado.funcionarios %}
+                                    <ul>
+                                        {% for funcionario in dado.funcionarios %}<li>{{ funcionario.nome }} - {{ funcionario.cargo }}</li>{% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <div>Nenhum funcionário envolvido</div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if dado.produtos %}
+                                    <ul>
+                                        {% for produto in dado.produtos %}<li>{{ produto.produto.nome }} - {{ produto.quantidade }} unidades</li>{% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <div>Nenhum produto relacionado</div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="/admin/fabrica/ordemproducao/{{ dado.ordem.id_ordem }}/change/"
+                                   class="btn btn-sm btn-secondary">Editar</a>
+                                <a href="/admin/fabrica/ordemproducao/{{ dado.ordem.id_ordem }}/delete/"
+                                   class="btn btn-sm btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% include "footer.html" %}
+    </body>
+</html>
