@@ -6,7 +6,7 @@
 html[data-theme="light"],
 :root {
     --primary: #79aec8;
-    --secondary: #417690;
+    --secondary: red;
     --accent: #f5dd5d;
     --primary-fg: #fff;
 
